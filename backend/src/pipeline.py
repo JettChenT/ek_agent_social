@@ -23,7 +23,8 @@ async def fetch_content(source: Source) -> List[Content]:
             Content(
                 id=str(uuid.uuid4()),
                 src_id=source.id,
-                content=str(content.content.title) + str(content.content.description),
+                title=content.content.title.content,
+                content=str(content.content.description.content),
                 timestamp=datetime.strptime(content.content.pub_date.content, "%a, %d %b %Y %H:%M:%S %Z")
             )
             for content in contents.channel.items
@@ -58,13 +59,14 @@ async def _main():
         "https://determined-insight-production.up.railway.app/twitter/user/jettchen5",
         "https://determined-insight-production.up.railway.app/twitter/user/luoluo_ai",
         "https://determined-insight-production.up.railway.app/bsky/profile/bsky.app",
+        "https://determined-insight-production.up.railway.app/twitter/list/839124356638904320"
     ]
     sources = [Source(id=str(uuid.uuid4()), name=f"test-{i}", url=url) for i, url in enumerate(tst_sources)]
     pipeline = Pipeline(
         id=str(uuid.uuid4()), 
         name="test", 
         sources=sources, 
-        last_checked=datetime.now()-timedelta(days=1)
+        last_checked=datetime.now()-timedelta(hours=12)
     )
     print(await run_pipeline(pipeline))
 

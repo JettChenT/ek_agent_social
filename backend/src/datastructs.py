@@ -4,6 +4,7 @@ from datetime import datetime
 class Content(BaseModel):
     id: str
     src_id: str
+    title: str
     content: str
     timestamp: datetime
 
