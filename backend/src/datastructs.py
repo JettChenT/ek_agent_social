@@ -1,9 +1,10 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from datetime import datetime
 
 class Content(BaseModel):
     id: str
     content: str
+    timestamp: datetime
 
 class Source(BaseModel):
     id: str
@@ -32,8 +33,9 @@ class Logs(BaseModel):
 
 class Pipeline(BaseModel):
     id: str
+    last_checked: datetime
     name: str
-    sources: list[Source]
-    aggregators: list[Aggregator]
-    filters: list[Filter]
-    enhancers: list[Enhancer]
+    sources: list[Source] = Field(default_factory=list)
+    aggregators: list[Aggregator] = Field(default_factory=list)
+    filters: list[Filter] = Field(default_factory=list)
+    enhancers: list[Enhancer] = Field(default_factory=list)
