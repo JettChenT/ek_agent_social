@@ -1,0 +1,24 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator jsclient {
+    provider = "prisma-client-js"
+}
+
+generator pyclient {
+    provider             = "prisma-client-py"
+    interface            = "asyncio"
+    recursive_type_depth = 5
+}
+
+model Content {
+    id           String   @id @default(cuid())
+    tweet_url    String?
+    content      String
+    lat          Float?
+    lng          Float?
+    ek_agent_url String?
+    timestamp    DateTime
+}

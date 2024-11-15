@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "mapbox-gl": "^3.8.0",
+    "maplibre-gl": "^4.7.1",
+    "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "next": "15.0.3"
+    "react-map-gl": "^7.1.7",
+    "react-tweet": "^3.2.1",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "typescript": "^5",

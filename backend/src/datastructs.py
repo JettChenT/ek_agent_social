@@ -1,11 +1,13 @@
 from pydantic import BaseModel, Field
 from datetime import datetime
+from typing import Optional
 
 class Content(BaseModel):
     id: str
     src_id: str
     title: str
     content: str
+    tweet_url: Optional[str] = None
     timestamp: datetime
 
 class Source(BaseModel):

@@ -25,6 +25,7 @@ async def fetch_content(source: Source) -> List[Content]:
                 src_id=source.id,
                 title=content.content.title.content,
                 content=str(content.content.description.content),
+                tweet_url=content.guid.content,
                 timestamp=datetime.strptime(content.content.pub_date.content, "%a, %d %b %Y %H:%M:%S %Z")
             )
             for content in contents.channel.items
@@ -56,17 +57,17 @@ async def run_pipeline(pipeline: Pipeline):
 async def _main():
     from rich import print
     tst_sources = [
-        "https://determined-insight-production.up.railway.app/twitter/user/jettchen5",
+        # "https://determined-insight-production.up.railway.app/twitter/user/jettchen5",
         "https://determined-insight-production.up.railway.app/twitter/user/luoluo_ai",
-        "https://determined-insight-production.up.railway.app/bsky/profile/bsky.app",
-        "https://determined-insight-production.up.railway.app/twitter/list/839124356638904320"
+        # "https://determined-insight-production.up.railway.app/bsky/profile/bsky.app",
+        # "https://determined-insight-production.up.railway.app/twitter/list/839124356638904320"
     ]
     sources = [Source(id=str(uuid.uuid4()), name=f"test-{i}", url=url) for i, url in enumerate(tst_sources)]
     pipeline = Pipeline(
         id=str(uuid.uuid4()), 
         name="test", 
         sources=sources, 
-        last_checked=datetime.now()-timedelta(hours=12)
+        last_checked=datetime.now()-timedelta(hours=48)
     )
     print(await run_pipeline(pipeline))
 
