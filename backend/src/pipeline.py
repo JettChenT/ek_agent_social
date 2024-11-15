@@ -22,6 +22,7 @@ async def fetch_content(source: Source) -> List[Content]:
         return [
             Content(
                 id=str(uuid.uuid4()),
+                src_id=source.id,
                 content=str(content.content.title) + str(content.content.description),
                 timestamp=datetime.strptime(content.content.pub_date.content, "%a, %d %b %Y %H:%M:%S %Z")
             )
