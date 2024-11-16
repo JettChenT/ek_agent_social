@@ -67,7 +67,7 @@ async def _main():
         id=str(uuid.uuid4()), 
         name="test", 
         sources=sources, 
-        last_checked=datetime.now()-timedelta(hours=48)
+        last_checked=datetime.now()-timedelta(hours=10)
     )
     print(await run_pipeline(pipeline))
 

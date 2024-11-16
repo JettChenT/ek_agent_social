@@ -67,13 +67,16 @@ export default function Home() {
     process.env.NEXT_PUBLIC_API_BASE_URL + "/content",
     fetcher
   );
+  const [redText, setRedText] = useState("(1 new threat)");
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className="w-1/2 mx-auto pt-10">
-      <h1 className="text-2xl font-bold">Latest Threats</h1>
+      <h1 className="text-2xl font-bold">
+        Latest Threats<span className="text-red-500"> {redText}</span>
+      </h1>
       <div className="flex flex-col gap-4">
         {data?.map((content) => (
           <ContentCard key={content.id} content={content} />

@@ -17,7 +17,7 @@ async def main():
         id=str(uuid.uuid4()), 
         name="test", 
         sources=[Source(id=str(uuid.uuid4()), name=f"test-{i}", url=url) for i, url in enumerate(SOURCES)], 
-        last_checked=datetime.now() - timedelta(hours=48)
+        last_checked=datetime.now() - timedelta(hours=10)
     )
     contents = await run_pipeline(pipeline)
     contents = [content for content_list in contents for content in content_list]
