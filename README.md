@@ -1,3 +1,3 @@
-# EarthKit Agent -- Social Media Integrations
+# EarthKit Agent
 
-Support for twitter in EarthKit Agent
+Repo for integrations regarding [EarthKit Agent](https://agent.earthkit.app/)
